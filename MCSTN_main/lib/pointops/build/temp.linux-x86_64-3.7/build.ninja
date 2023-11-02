@@ -1,0 +1,42 @@
+ninja_required_version = 1.3
+cxx = c++
+nvcc = /usr/local/cuda/bin/nvcc
+
+cflags = -pthread -B /home/lipeng/anaconda3/envs/V2B_2/compiler_compat -Wl,--sysroot=/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include/TH -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include/THC -I/usr/local/cuda/include -I/home/lipeng/anaconda3/envs/V2B_2/include/python3.7m -c
+post_cflags = -g -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=pointops_cuda -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14
+cuda_cflags = -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include/torch/csrc/api/include -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include/TH -I/home/lipeng/anaconda3/envs/V2B_2/lib/python3.7/site-packages/torch/include/THC -I/usr/local/cuda/include -I/home/lipeng/anaconda3/envs/V2B_2/include/python3.7m -c
+cuda_post_cflags = -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O2 -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=pointops_cuda -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_75,code=sm_75 -std=c++14
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  command = $nvcc $cuda_cflags -c $in -o $out $cuda_post_cflags
+
+
+
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/ballquery/ballquery_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/ballquery/ballquery_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/ballquery/ballquery_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/ballquery/ballquery_cuda_kernel.cu
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/featuredistribute/featuredistribute_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/featuredistribute/featuredistribute_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/featuredistribute/featuredistribute_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/featuredistribute/featuredistribute_cuda_kernel.cu
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/grouping/grouping_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/grouping/grouping_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/grouping/grouping_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/grouping/grouping_cuda_kernel.cu
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/grouping_int/grouping_int_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/grouping_int/grouping_int_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/grouping_int/grouping_int_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/grouping_int/grouping_int_cuda_kernel.cu
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/interpolation/interpolation_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/interpolation/interpolation_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/interpolation/interpolation_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/interpolation/interpolation_cuda_kernel.cu
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/knnquery/knnquery_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/knnquery/knnquery_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/knnquery/knnquery_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/knnquery/knnquery_cuda_kernel.cu
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/labelstat/labelstat_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/labelstat/labelstat_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/labelstat/labelstat_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/labelstat/labelstat_cuda_kernel.cu
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/pointops_api.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/pointops_api.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/sampling/sampling_cuda.o: compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/sampling/sampling_cuda.cpp
+build /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/build/temp.linux-x86_64-3.7/src/sampling/sampling_cuda_kernel.o: cuda_compile /home/lipeng/fengshihao/V2B+SST/V2B_main_1/lib/pointops/src/sampling/sampling_cuda_kernel.cu
+
+
+
+
+
