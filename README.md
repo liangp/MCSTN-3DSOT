@@ -1,7 +1,7 @@
 # Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking
 
 ## Introduction
-This repository is the official implementation of the paper "Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking, IEEE Robotics and Automation Letters, 2023". Our code is based on previous work [V2B](https://github.com/fpthink/V2B).
+This repository is the official implementation of the paper "Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking, IEEE Robotics and Automation Letters, 2023". Our code is based on [V2B](https://github.com/fpthink/V2B) and [SST](https://github.com/tusen-ai/SST).
 
 
 
