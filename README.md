@@ -1,9 +1,9 @@
 # Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking
 
 ## Introduction
-This repository is released for MCSTN-3DSOT in our [IEEE ROBOTICS AND AUTOMATION LETTERS 2023 paper (poster)](https://ieeexplore.ieee.org/document/10287541).
+This repository is the official implementation of the paper "Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking, IEEE Robotics and Automation Letters, 2023". Our code is based on previous work [V2B](https://github.com/fpthink/V2B).
 
-**Note**: Our code is an improvement on previous work [V2B](https://github.com/fpthink/V2B), if you are more familiar with [V2B](https://github.com/fpthink/V2B), you can also refer to their code.
+
 
 ## Environment settings
 * Create an environment for MCSTN
@@ -23,7 +23,9 @@ pip install -r requirements.txt
 ```
 
 ## Data preparation
-**Note**: We treated the three datasets KITTI, nuScenes, and Waymo in the same way as [V2B](https://github.com/fpthink/V2B) and [STNet](https://github.com/fpthink/STNet).
+We use the datasets KITTI, nuScenes, and Waymo in the same way as [V2B](https://github.com/fpthink/V2B) and [STNet](https://github.com/fpthink/STNet). Please refer to [V2B](https://github.com/fpthink/V2B) the data preparation.
+
+**Note**: We use the datasets KITTI, nuScenes, and Waymo in the same way as [V2B](https://github.com/fpthink/V2B) and [STNet](https://github.com/fpthink/STNet). 
 ### [KITTI dataset](https://projet.liris.cnrs.fr/imagine/pub/proceedings/CVPR2012/data/papers/424_O3C-04.pdf)
 * Download the [velodyne](http://www.cvlibs.net/download.php?file=data_tracking_velodyne.zip), [calib](http://www.cvlibs.net/download.php?file=data_tracking_calib.zip) and [label_02](http://www.cvlibs.net/download.php?file=data_tracking_label_2.zip) from [KITTI Tracking](http://www.cvlibs.net/datasets/kitti/eval_tracking.php). Unzip the downloaded files and place them under the same parent folder.
 
