@@ -1,7 +1,7 @@
 # Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking
 
 ## Introduction
-This repository is the official implementation of the paper "Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking, IEEE Robotics and Automation Letters, 2023". Our code is based on [V2B](https://github.com/fpthink/V2B) and [SST](https://github.com/tusen-ai/SST).
+This repository is the official implementation of our paper "Multi-Correlation Siamese Transformer Network with Dense Connection for 3D Single Object Tracking, IEEE Robotics and Automation Letters, 2023". Our code is based on [V2B](https://github.com/fpthink/V2B) and [SST](https://github.com/tusen-ai/SST).
 
 
 
@@ -27,7 +27,7 @@ We use the datasets KITTI, nuScenes, and Waymo in the same way as [V2B](https://
 
 
 
-**Note**: After you get the dataset ready, please modify the path variable ```data_dir, val_data_dir``` about the dataset under configuration file ```MCSTN_main/utils/options```.
+**Note**: After you get the dataset ready, please modify the path variable ```data_dir``` and ```val_data_dir``` about the dataset under configuration file ```MCSTN_main/utils/options```.
 
 ## Evaluation
 
