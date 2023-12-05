@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ```
 
 ## Data preparation
-We use the datasets KITTI, nuScenes, and Waymo in the same way as [V2B](https://github.com/fpthink/V2B) and [STNet](https://github.com/fpthink/STNet). Please refer to [V2B](https://github.com/fpthink/V2B) the data preparation.
+We use the datasets KITTI, nuScenes, and Waymo in the same way as [V2B](https://github.com/fpthink/V2B) and [STNet](https://github.com/fpthink/STNet). Please refer to [V2B](https://github.com/fpthink/V2B) for the detail of data preparation.
 
 
 
